@@ -13,7 +13,7 @@
      name: mysqld
      enabled: yes
      state: started
----
+     
 - name: Check MySQL root password
   hosts: web
   gather_facts: no
