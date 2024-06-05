@@ -1,0 +1,29 @@
+- name : configure db server
+  hosts : web
+  tasks :
+  - name : install mysql server
+    ansible.builtin.dnf:
+     name : install mysql server
+     state : latest
+  - name : start mysql server
+    ansible.builtin.service:
+     name : mysqld server
+     enabled : yes
+     state : started
+- name: Check MySQL Root User
+  hosts: db
+  become: yes
+  tasks:
+    - name: Ensure MySQL root user exists
+      mysql_user:
+        name: root
+        login_user: root
+        login_password: ExpenseApp@1  # Leave this empty to read credentials from ~/.my.cnf
+        state: present
+      register: root_user_status
+      tags: mysql
+
+    - name: Display root user details
+      debug:
+        var: root_user_status
+      
