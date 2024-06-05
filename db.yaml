@@ -2,7 +2,7 @@
   hosts: db
   become: yes
   vars:
-  login_host: db.praveenmech.online
+    login_host: db.praveenmech.online
   tasks:
   - name: install mysql server
     ansible.builtin.dnf:
@@ -19,7 +19,7 @@
      login_user: root
      login_password: ExpenseApp@1
      login_host: "{{ login_host }}"
-     fi lter: version
+     filter: version
     ignore_errors: yes
     register: mysql_connection_output
 
