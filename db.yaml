@@ -1,16 +1,16 @@
-- name : configure db server
-  hosts : web
-  become : yes
-  tasks :
-  - name : install mysql server
+- name: configure db server
+  hosts: web
+  become: yes
+  tasks:
+  - name: install mysql server
     ansible.builtin.dnf:
-     name : install mysql server
-     state : latest
-  - name : start mysql server
+     name: install mysql server
+     state: latest
+  - name: start mysql server
     ansible.builtin.service:
-     name : mysqld server
-     enabled : yes
-     state : started
+     name: mysqld server
+     enabled: yes
+     state: started
 # - name: Check MySQL Root User
 #   hosts: db
 #   become: yes
