@@ -1,6 +1,8 @@
 - name: configure db server
   hosts: web
   become: yes
+  vars:
+  login_host: db.praveenmech.online
   tasks:
   - name: install mysql server
     ansible.builtin.dnf:
@@ -13,14 +15,14 @@
      state: started
 ---
 - name: Check MySQL root password
-  hosts: localhost
+  hosts: web
   gather_facts: no
   tasks:
     - name: Execute SQL query
       mysql_db:
         login_user: root
-        login_password: "{{ mysql_root_password }}"
-        login_host: localhost
+        login_password: ExpenseApp@1
+        login_host: "{{ login_host }}"
         login_port: 3306
         db: mysql
         query: "SELECT User FROM mysql.user WHERE User = 'root' AND Password IS NOT NULL"
