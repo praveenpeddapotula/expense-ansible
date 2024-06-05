@@ -4,11 +4,11 @@
   tasks:
   - name: install mysql server
     ansible.builtin.dnf:
-     name: install mysql server
+     name: mysql-server
      state: latest
   - name: start mysql server
     ansible.builtin.service:
-     name: mysqld-server
+     name: mysqld
      enabled: yes
      state: started
 # - name: Check MySQL Root User
