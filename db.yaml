@@ -8,7 +8,7 @@
      state: latest
   - name: start mysql server
     ansible.builtin.service:
-     name: mysqld server
+     name: mysqld-server
      enabled: yes
      state: started
 # - name: Check MySQL Root User
