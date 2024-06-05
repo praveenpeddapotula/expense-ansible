@@ -2,7 +2,7 @@
   hosts: db
   become: yes
   vars:
-    login_host: db.praveenmech.online
+    login_host: 10.0.2.10 
   tasks:
   - name: install mysql server
     ansible.builtin.dnf:
