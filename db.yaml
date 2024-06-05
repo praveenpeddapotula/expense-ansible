@@ -3,7 +3,17 @@
   become: yes
   vars:
     login_host: 10.0.2.10 
+  vars_prompt:
+  - name: mysql_root_password
+    prompt: please enter mysql_root_password
+    private: no
   tasks:
+  - name: install python mysql packages
+    ansible.builtin.pip:
+     name:
+      - PyMySQL
+      - cryptography
+    executable: pip3.9
   - name: install mysql server
     ansible.builtin.dnf:
      name: mysql-server
@@ -17,7 +27,7 @@
   - name: Get MySQL version with non-default credentials
     community.mysql.mysql_info:
      login_user: root
-     login_password: ExpenseApp@1
+     login_password: "{{ mysql_root_password }}"
      login_host: "{{ login_host }}"
      filter: version
     ignore_errors: yes
@@ -26,4 +36,7 @@
   - name: print output
     ansible.builtin.debug:
      msg  : "{{ mysql_connection_output }}"
-      
+
+  - name: setup rootup password
+    ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ mysql_root_password }}"
+     when: mysql_connection_output.failed is true 
