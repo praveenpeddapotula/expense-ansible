@@ -2,7 +2,7 @@
   hosts: db
   become: yes
   vars:
-    login_host: 10.0.2.10 
+    login_host: 1db.praveenmech.online 
   vars_prompt:
   - name: mysql_root_password
     prompt: please enter mysql_root_password
