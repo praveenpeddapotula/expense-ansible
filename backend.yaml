@@ -2,7 +2,7 @@
   hosts: backend
   become: yes
   vars:
-  login_host: db.praveenmech.online
+   login_host: db.praveenmech.online
   tasks: 
   - name: disable 
     ansible.builtin.command:  dnf module disable nodejs -y
