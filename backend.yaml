@@ -46,7 +46,7 @@
      dest: /etc/systemd/system/backend.service
 
   - name: deamon reload
-    ansible.buitlin.systemd_service:
+    ansible.buitin.systemd_service:
      daemon_reload: true
 
   - name: enable and start backend service
@@ -61,7 +61,7 @@
      - PyMySQL
      - cryptography
      executable: pip3.9
-     
+
   - name: Run MySQL command
     community.mysql.mysql_db:
       login_host: "{{ db.praveenmech.online }}"
