@@ -1,6 +1,8 @@
 - name: configure backend server
   hosts: backend
   become: yes
+  vars:
+  login_host: db.praveenmech.online
   tasks: 
   - name: disable 
     ansible.builtin.command:  dnf module disable nodejs -y
@@ -64,7 +66,7 @@
 
   - name: Run MySQL command
     community.mysql.mysql_db:
-      login_host: "{{ db.praveenmech.online }}"
+      login_host: "{{ login_host }}"
       login_user: root
       login_password: ExpenseApp@1
       login_db: db.praveenmech.online  # Replace with your database name
