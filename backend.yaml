@@ -1,4 +1,6 @@
 - name: configure backend server
+  hosts: backend
+  become: yes
   tasks: 
   - name: disable 
     ansible.builtin.command:  dnf module disable nodejs -y
@@ -35,4 +37,3 @@
      src: backend.service
      dest: /etc/systemd/system/backend.service
 
-     
