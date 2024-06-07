@@ -3,6 +3,8 @@
   become: yes
   vars:
    login_host: db.praveenmech.online
+   login_password: ExpenseApp@1
+   
   tasks: 
   - name: disable 
     ansible.builtin.command:  dnf module disable nodejs -y
@@ -61,15 +63,14 @@
           - cryptography
         executable: pip3.9
 
-  - name: Execute MySQL command
+  - name: import data into mysql
     community.mysql.mysql_db:
-      login_host: "{{ login_host }}"
       login_user: root
-      login_password: ExpenseApp@1
-      login_db: db.praveenmech.online  # Replace with your database name
+      login_password: "{{ login_password }}"
+      login_host: "{{ login_host }}"
       target: /app/schema/backend.sql
       state: import
-      name: all 
+      name: all
 
   - name: deamon reload
     ansible.builtin.systemd_service:
