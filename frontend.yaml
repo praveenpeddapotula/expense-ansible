@@ -21,18 +21,13 @@
   - name: create a html directory
     ansible.builtin.file:
      path: /usr/share/nginx/html
-     state: directory 
-
-  - name: downloading a file
-    ansible.builtin.get_url:
-     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
-     dest: /usr/share/nginx/html/html.zip
-     remote_src: yes
+     state: directory
 
   - name: extracting zip file
     ansible.builtin.unarchive:
-     src: usr/share/nginx/html/html.zip
+     src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
      dest: usr/share/nginx/html
+     remote_src: yes
 
   - name: copying a file
     ansible.builtin.copy:
