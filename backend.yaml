@@ -56,15 +56,13 @@
      name: backend
      state: started
      enabled: true
-   
+
   - name: install python and mysql dependencies
     ansible.builtin.pip:
       name:
-        - PyMySQL
-        - cryptography
-      state: installed
-    executable: pip3.9
-
+       - PyMySQL==3.9
+       - cryptography
+       
   - name: Run MySQL command
     community.mysql.mysql_db:
       login_host: "{{ login_host }}"
