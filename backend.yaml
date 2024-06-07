@@ -63,7 +63,6 @@
         name:
           - PyMySQL
           - cryptography
-        state: present
         executable: pip3.9
 
   - name: Run MySQL command
