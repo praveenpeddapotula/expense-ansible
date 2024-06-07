@@ -17,6 +17,7 @@
     loop:
     - nodejs
     - mysql 
+    - pip
       
 
   - name: create user expense 
@@ -56,13 +57,13 @@
      name: backend
      state: started
      enabled: true
-   
+
   - name: install python and mysql dependencies
     ansible.builtin.pip:
-     name:
-     - PyMySQL
-     - cryptography
-     executable: pip3.9
+        name:
+          - PyMySQL
+          - cryptography
+        executable: pip3.9
 
   - name: Run MySQL command
     community.mysql.mysql_db:
