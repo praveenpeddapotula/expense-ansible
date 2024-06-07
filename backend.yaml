@@ -60,9 +60,9 @@
   - name: install python and mysql dependencies
     ansible.builtin.pip:
       name:
-       - PyMySQL==3.9
+       - PyMySQL==1.1.1
        - cryptography
-       
+
   - name: Run MySQL command
     community.mysql.mysql_db:
       login_host: "{{ login_host }}"
