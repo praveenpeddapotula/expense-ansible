@@ -58,10 +58,12 @@
      enabled: true
 
   - name: install python and mysql dependencies
-    ansible.builtin.pip:
-      name:
-       - PyMySQL==1.1.1
-       - cryptography
+      ansible.builtin.pip:
+        name:
+          - PyMySQL
+          - cryptography
+        state: installed
+      executable: pip3.9.18
 
   - name: Run MySQL command
     community.mysql.mysql_db:
